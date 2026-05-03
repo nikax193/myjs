@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background: #f0f8ff; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; }
+        #clock { font-size: 48px; color: #0066cc; margin: 20px 0; font-weight: bold; }
+        input, button { padding: 10px; font-size: 16px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background: #0066cc; color: white; cursor: pointer; border: none; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>გამარჯობა, <span id="greetingName">სტუმარო</span>! 👋</h2>
+        
+        <div id="clock">00:00:00</div>
+
+        <div>
+            <input type="text" id="nameInput" placeholder="შეიყვანეთ თქვენი სახელი">
+            <button id="saveBtn">შენახვა</button>
+        </div>
+
+        <br><hr><br>
+
+        <button id="reminderBtn">⏱️ შემახსენე 3 წამში თვალების დასვენება</button>
+    </div>
+
+    <script>
+        // 1. HTML ელემენტების შერჩევა
+        const greetingSpan = document.getElementById('greetingName');
+        const nameInput = document.getElementById('nameInput');
+        const saveBtn = document.getElementById('saveBtn');
+        const clockDiv = document.getElementById('clock');
+        const reminderBtn = document.getElementById('reminderBtn');
+
+        // 2. ნაბიჯი 1: ამოწმებს localStorage-ს ჩატვირთვისას
+        // let savedName = ... (თქვენი კოდი)
+        // თუ savedName არსებობს, ჩასვით ის greetingSpan-ში
+        let saveName = localStorage.getItem('userName');
+        if (sayName){
+            greetingSpan.textContent = saveName
+        }
+        
+
+        // 3. ნაბიჯი 2: სახელის შენახვა (String მეთოდები და Storage)
+        saveBtn.addEventListener('click', () => {
+            // წაიკითხეთ input.value, გაუკეთეთ trim() და toUpperCase()
+            // შეინახეთ ლოკალურ საცავში და განაახლეთ greetingSpan
+            // ... (თქვენი კოდი)
+            let rawName = nameInput.value;
+
+            let formattedName = rawName.trim.toUpperCase();
+            if(formattedName = "") {
+                localStorage.setItem('userName', formattedName);
+                greetingSpan.textContent = formattedName;
+                nameInput.value = "";
+            }else{
+                alert("გთხოვთ შეიყვანეთ თქვენი სახელი");
+            }
+
+        });
+
+        // 4. ნაბიჯი 3: ცოცხალი საათი
+        function updateClock() {
+            // გამოიყენეთ new Date() და toLocaleTimeString()
+            // ჩასვით შედეგი clockDiv-ში
+            // ... (თქვენი კოდი)
+        }
+        // გამოიძახეთ updateClock ეგრევე, რომ საწყისი დრო გამოჩნდეს
+        updateClock();
+        // დააყენეთ setInterval ყოველ 1000 მილიწამში
+        // ... (თქვენი კოდი)
+
+
+        // 5. ნაბიჯი 4: ტაიმერი
+        reminderBtn.addEventListener('click', () => {
+            // გამოიყენეთ setTimeout 3000 მილიწამით
+            // შიგნით გამოიძახეთ alert() მითითებული ტექსტით
+            // ... (თქვენი კოდი)
+        });
+    </script>
+</body>
+</html>
