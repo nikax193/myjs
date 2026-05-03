@@ -39,9 +39,9 @@
         // 2. ნაბიჯი 1: ამოწმებს localStorage-ს ჩატვირთვისას
         // let savedName = ... (თქვენი კოდი)
         // თუ savedName არსებობს, ჩასვით ის greetingSpan-ში
-        let saveName = localStorage.getItem('userName');
-        if (sayName){
-            greetingSpan.textContent = saveName
+        let savedName = localStorage.getItem('userName');
+        if (savedName){
+            greetingSpan.textContent = savedName;
         }
         
 
@@ -68,11 +68,14 @@
             // გამოიყენეთ new Date() და toLocaleTimeString()
             // ჩასვით შედეგი clockDiv-ში
             // ... (თქვენი კოდი)
+            const now = new Date();
+            clockDiv.textContent = now.toLocaleTimeString();
         }
         // გამოიძახეთ updateClock ეგრევე, რომ საწყისი დრო გამოჩნდეს
         updateClock();
         // დააყენეთ setInterval ყოველ 1000 მილიწამში
         // ... (თქვენი კოდი)
+        setInterval(updateClock, 1000);
 
 
         // 5. ნაბიჯი 4: ტაიმერი
@@ -80,6 +83,9 @@
             // გამოიყენეთ setTimeout 3000 მილიწამით
             // შიგნით გამოიძახეთ alert() მითითებული ტექსტით
             // ... (თქვენი კოდი)
+            setTimeout(() => {
+                alert("შეისვენე და დაასვენე თვალები");
+            },3000)
         });
     </script>
 </body>
