@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <title>თანამშრომლების სია</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; background: #f8fafc; text-align: center; }
+        .btn { background: #0ea5e9; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 8px; cursor: pointer; }
+        .btn:hover { background: #0284c7; }
+        #userContainer { margin-top: 30px; display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .user-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
+        .user-card h3 { margin: 0 0 10px 0; color: #0f172a; }
+        .user-card p { margin: 0; color: #64748b; }
+        .error-msg { color: #ef4444; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>ჩვენი გუნდი</h1>
+    <button id="loadBtn" class="btn">თანამშრომლების ჩატვირთვა ⬇️</button>
+
+    <div id="userContainer">
+        <!-- მომხმარებლების ბარათები აქ გაჩნდება -->
+    </div>
+
+    <script>
+        const API_URL = '[https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)';
+        const loadBtn = document.querySelector('#loadBtn');
+        const userContainer = document.querySelector('#userContainer');
+
+        // 1. შექმენით ასინქრონული ფუნქცია (async function)
+        async function fetchUsers() {
+            // მომხმარებლისთვის ვაჩვენოთ, რომ იტვირთება
+            userContainer.innerHTML = "<p>იტვირთება...</p>";
+
+            // 2. დაიწყეთ try...catch ბლოკი
+            try {
+                // 3. გააგზავნეთ GET მოთხოვნა fetch-ით და დაელოდეთ (await)
+                
+                // 4. შეამოწმეთ response.ok
+                
+                // 5. გადააქციეთ პასუხი JSON-ად (await response.json())
+                
+                // 6. გაასუფთავეთ userContainer და ციკლით გამოიტანეთ თითოეული მომხმარებელი
+                // (გამოიყენეთ HTML სტრუქტურა: <div class="user-card"><h3>სახელი</h3><p>ფოსტა</p></div>)
+
+            } catch (error) {
+                // 7. დააფიქსირეთ შეცდომა (catch) და გამოიტანეთ ეკრანზე
+                userContainer.innerHTML = `<p class="error-msg">შეცდომა: ${error.message}</p>`;
+            }
+        }
+
+        // 8. დაადეთ ღილაკს Event Listener
+        
+    </script>
+</body>
+</html>
