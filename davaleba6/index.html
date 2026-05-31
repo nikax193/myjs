@@ -36,14 +36,28 @@
             // 2. დაიწყეთ try...catch ბლოკი
             try {
                 // 3. გააგზავნეთ GET მოთხოვნა fetch-ით და დაელოდეთ (await)
+                const response = await fetch(API_URL); 
                 
                 // 4. შეამოწმეთ response.ok
-                
+                if (!response.ok) {
+                    throw new Error("მონაცემების მიღება ვერ მოხერხდა");
+                }
+
                 // 5. გადააქციეთ პასუხი JSON-ად (await response.json())
+                const users = await response.json();
                 
                 // 6. გაასუფთავეთ userContainer და ციკლით გამოიტანეთ თითოეული მომხმარებელი
                 // (გამოიყენეთ HTML სტრუქტურა: <div class="user-card"><h3>სახელი</h3><p>ფოსტა</p></div>)
+                userContainer.innerHTML = ""; //გასუფავება
 
+                    users.forEach(user => {
+                        userContainer.innerHTML += `
+                            <div class="user-card">
+                                <h3>${user.name}</h3>
+                                <p>${user.email}</p>
+                            </div>
+                        `;
+                    });
             } catch (error) {
                 // 7. დააფიქსირეთ შეცდომა (catch) და გამოიტანეთ ეკრანზე
                 userContainer.innerHTML = `<p class="error-msg">შეცდომა: ${error.message}</p>`;
@@ -51,6 +65,7 @@
         }
 
         // 8. დაადეთ ღილაკს Event Listener
+        loadBtn.addEventListener('click', fetchUsers);
         
     </script>
 </body>
